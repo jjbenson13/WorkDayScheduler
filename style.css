@@ -4,7 +4,7 @@ body {
   line-height: 1;
 }
 
-textarea{
+textarea {
   background: transparent;
   border: none;
   resize: none;
@@ -14,26 +14,37 @@ textarea{
 }
 
 .jumbotron {
+  background-image: linear-gradient(rgb(250, 229, 229), rgb(250, 194, 194));
+  text-align: center;
+  color: rgb(100, 99, 99);
+  border-radius: 0;
+  border-bottom: 10px solid rgb(100, 99, 99);
+}
+
+/* .jumbotron {
+  background-image: linear-gradient(red, red);
   text-align: center;
   background-color: transparent;
   color: black;
   border-radius: 0;
   border-bottom: 10px solid black;
-}
+} */
 
-.description{
+.description {
   white-space: pre-wrap;
 }
 
-.time-block{
+.time-block {
   text-align: center;
   border-radius: 15px;
+  background-image: linear-gradient(red, red);
 }
 
 .row {
   white-space: pre-wrap;
   height: 80px;
-  border-top: 1px solid white;;
+  border-top: 1px solid white;
+  ;
 }
 
 .hour {
