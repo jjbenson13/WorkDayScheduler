@@ -1,7 +1,7 @@
-// 'Monday, October10 11th'
+// 'Friday, October 15th'
 let currentDate = moment().format('dddd, MMMM Do')
 
-// populate p tag with current date
+// populate p tag with currentDate
 document.getElementById('currentDay').textContent = currentDate
 
 let presentHour = moment().hour()
@@ -22,26 +22,26 @@ const stringInteger = (timeString) => {
   }
 }
 
+// handles highlights
 for (let i = 9; i <= 17; i++) {
-  let timeCounter = 'time' + i
+  let timeCounter = "time" + i
   let timeString = document.getElementById(timeCounter).textContent //9AM
-  let timeInteger = stringInteger(timeString) //9 
+  let timeInteger = stringInteger(timeString) // 9
 
   if (presentHour == timeInteger) {
     document.getElementById(timeCounter).nextElementSibling.children[0].classList.add('present')
   }
-
   else if (presentHour < timeInteger) {
     document.getElementById(timeCounter).nextElementSibling.children[0].classList.add('future')
   }
-
   else if (presentHour > timeInteger) {
     document.getElementById(timeCounter).nextElementSibling.children[0].classList.add('past')
   }
 
-  //Handle populating textareas
-  let planCounter = 'plan' + i 
+  // handle populating textareas
+  let planCounter = "plan" + i
   document.getElementById(planCounter).textContent = workday[planCounter]
+
 }
 
 let schedule = {
@@ -53,28 +53,20 @@ let schedule = {
   'plan14': '',
   'plan15': '',
   'plan16': '',
-  'plan17': '',
+  'plan17': ''
 }
+
 
 // handle saving
 document.addEventListener('click', event => {
   if (event.target.classList.contains('saveBtn')) {
 
-    let note = event.target.previousElementSibling.children[0].vaule
+    let note = event.target.previousElementSibling.children[0].value
 
     let plan = event.target.previousElementSibling.children[0].id
-    
+
     workday[plan] = note
-    
+
     localStorage.setItem('workday', JSON.stringify(workday))
-
-
-
   }
 })
-
- 
-
-
-
-
