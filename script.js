@@ -6,7 +6,7 @@ document.getElementById('currentDay').textContent = currentDate
 
 let presentHour = moment().hour()
 
-let workday = JSON.parse(localStorage.getItem('workday')) || schedule
+
 
 const stringInteger = (timeString) => {
   switch (timeString) {
@@ -40,11 +40,10 @@ for (let i = 9; i <= 17; i++) {
 
   // handle populating textareas
   let planCounter = "plan" + i
-  document.getElementById(planCounter).textContent = workday[planCounter]
-
 }
 
 let schedule = {
+  'plan8': '',
   'plan9': '',
   'plan10': '',
   'plan11': '',
@@ -65,8 +64,5 @@ document.addEventListener('click', event => {
 
     let plan = event.target.previousElementSibling.children[0].id
 
-    workday[plan] = note
-
-    localStorage.setItem('workday', JSON.stringify(workday))
   }
 })
