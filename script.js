@@ -1,10 +1,12 @@
 // 'Monday, October10 11th'
-let currentDate = moment().format('dddd, MMMMM Do')
+let currentDate = moment().format('dddd, MMMM Do')
 
 // populate p tag with current date
 document.getElementById('currentDay').textContent = currentDate
 
 let presentHour = moment().hour()
+
+let workday = JSON.parse(localStorage.getItem('workday')) || schedule
 
 const stringInteger = (timeString) => {
   switch (timeString) {
@@ -25,7 +27,7 @@ for (let i = 9; i <= 17; i++) {
   let timeString = document.getElementById(timeCounter).textContent //9AM
   let timeInteger = stringInteger(timeString) //9 
 
-  if (presentHour === timeInteger) {
+  if (presentHour == timeInteger) {
     document.getElementById(timeCounter).nextElementSibling.children[0].classList.add('present')
   }
 
@@ -36,26 +38,42 @@ for (let i = 9; i <= 17; i++) {
   else if (presentHour > timeInteger) {
     document.getElementById(timeCounter).nextElementSibling.children[0].classList.add('past')
   }
+
+  //Handle populating textareas
+  let planCounter = 'plan' + i 
+  document.getElementById(planCounter).textContent = workday[planCounter]
+}
+
+let schedule = {
+  'plan9': '',
+  'plan10': '',
+  'plan11': '',
+  'plan12': '',
+  'plan13': '',
+  'plan14': '',
+  'plan15': '',
+  'plan16': '',
+  'plan17': '',
 }
 
 // handle saving
-// document.addEventListener('click', event => {
-//   if (event.target.classList.contains('saveBtn')) {
+document.addEventListener('click', event => {
+  if (event.target.classList.contains('saveBtn')) {
 
-//     let note = event.target.previousElementSibling.children[0].vaule
+    let note = event.target.previousElementSibling.children[0].vaule
 
-//     let plan = event.target.previousElementSibling.children[0].id
-
-//     workday[plan] = note
-
-//     localStorage.setItem('workday', JSON.stringify(workday))
-
-
-
-//   }
-// })
+    let plan = event.target.previousElementSibling.children[0].id
+    
+    workday[plan] = note
+    
+    localStorage.setItem('workday', JSON.stringify(workday))
 
 
+
+  }
+})
+
+ 
 
 
 
